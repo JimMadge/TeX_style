@@ -1,0 +1,44 @@
+\documentclass{article}
+
+\usepackage{defaults}
+\usepackage[exp]{macros}
+\usepackage[caption, title, reference]{document_style}
+
+\usepackage{txfonts}
+
+\begin{document}
+
+\section{Section}%
+\label{sec:section}
+
+1\supscr{st} 2\subscr{eme}
+
+\raggedright{}
+\textit{i.e.}  \textit{e.g.} \textit{etc.} \textit{viz.} \textit{et al.}
+\textit{vice versa}\par
+\textit{i.e.}\  \textit{e.g.}\ \textit{etc.}\ \textit{viz.}\ \textit{et al.}\
+\textit{vice versa}\par
+\ie{}\ \eg{}\ \etc{}\ \viz{}\ \etal{}\ \vive{}
+
+$\dif{x}$ $\diff{y}{x}$ $\pdif{x}$ $\pdiff{y}{x}$
+
+$\vec{a}$ $\unit{b}$ $\norm{\vec{c}}$
+
+$\trans{\vec{M}}$
+
+\begin{equation}
+  \e{- \beta k_{\mathrm{B}} T}
+  \label{eq:boltzmann}
+\end{equation}
+
+A famous statistical mechanics expression \cref{eq:boltzmann}
+
+$\epsilon$ $\varepsilon$
+
+$\phi$ $\varphi$
+
+\cref{sec:section}
+
+\section{Another Section}
+
+\end{document}
