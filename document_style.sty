@@ -1,0 +1,72 @@
+\ProvidesPackage{document_style}[My document style preferences]
+
+\RequirePackage{kvoptions}
+
+% Key value options
+\SetupKeyvalOptions{%
+  family = style,
+  prefix = style@
+}
+
+% Caption style
+\DeclareBoolOption{caption}
+% Title style
+\DeclareBoolOption{title}
+% Referencing style
+\DeclareBoolOption{reference}
+% Print flag (when true hyperlinks are not colours)
+\DeclareBoolOption{print}
+% Change default float placement rules
+\DeclareBoolOption[true]{float}
+
+% Process key values options
+\ProcessKeyvalOptions*
+
+%****************************************
+% Style
+
+% Captions
+\ifstyle@caption
+  \RequirePackage{caption}
+  \captionsetup{%
+    format=hang,
+    textfont={footnotesize,sf},
+    labelfont={small,sf,bf}
+  }
+\fi
+
+% Titles
+\ifstyle@title
+  \RequirePackage[small,sc]{titlesec}
+\fi
+
+% References
+\ifstyle@reference
+  \RequirePackage{hyperref}
+  \hypersetup{bookmarksnumbered}
+  % Suppress hyperlink colours when printing
+  \ifstyle@print
+    \hypersetup{hidelinks}
+  \else
+    \hypersetup{colorlinks, citecolor=blue}
+  \fi
+  \RequirePackage[noabbrev, nameinlink]{cleveref}
+  % Format equation references without brackets
+  \creflabelformat{equation}{#2#1#3}
+  % Ensure appendices are not references as section or sections
+  \crefname{appendix}{appendix}{appendices}
+  \Crefname{appendix}{Appendix}{Appendices}
+\fi
+
+% Float placement rules
+\ifdefaults@float
+  \setcounter{totalnumber}{4}
+  \setcounter{topnumber}{2}
+  \setcounter{bottomnumber}{2}
+  \renewcommand{\topfraction}{0.9}
+  \renewcommand{\bottomfraction}{0.8}
+\fi
+
+% Footnote symbols, up to 16
+\RequirePackage[symbol*]{footmisc}
+%****************************************
