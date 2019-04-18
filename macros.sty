@@ -1,0 +1,67 @@
+\ProvidesPackage{macros}[Macros]
+
+\RequirePackage{kvoptions}
+
+% Key value options
+\SetupKeyvalOptions{%
+  family = macros,
+  prefix = macros@
+}
+
+% Redefine exponential option
+\DeclareBoolOption{exp}
+
+% Process key values options
+\ProcessKeyvalOptions*
+
+%****************************************
+% Text macros
+
+% Superscript and subscript
+\newcommand{\supscr}[1]{\textsuperscript{#1}}
+\newcommand{\subscr}[1]{\textsubscript{#1}}
+
+% Latin
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\etc}{\textit{etc.}}
+\newcommand{\viz}{\textit{viz.}}
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\vive}{\textit{vice versa}}
+%****************************************
+
+%****************************************
+% Maths macros
+\RequirePackage{amsmath}
+
+% Differentials and partial differentials
+\newcommand{\dif}[1]{\mathrm{d}\,#1}
+\newcommand{\pdif}[1]{\partial#1}
+\newcommand{\diff}[2]{%
+  \frac{%
+    \dif{#1}
+  }{%
+    \dif{#2}
+  }
+}
+\newcommand{\pdiff}[2]{%
+  \frac{%
+    \pdif{#1}
+  }{%
+    \pdif{#2}
+  }
+}
+
+% Vectors
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\unit}[1]{\mathbf{\hat{#1}}}
+\newcommand{\norm}[1]{\left\lvert#1\right\rvert}
+
+% Matrices
+\newcommand{\trans}[1]{#1^{\top}}
+
+% exponential
+\ifmacros@exp
+  \newcommand{\e}[1]{e^{#1}}
+\fi
+%****************************************
